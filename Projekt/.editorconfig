@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS8612: Obsługa wartości null dla typów referencyjnych w typie jest niezgodna z niejawnie implementowaną składową.
+dotnet_diagnostic.CS8612.severity = silent
