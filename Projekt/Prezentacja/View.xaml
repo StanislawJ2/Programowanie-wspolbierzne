@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         Title="View"
         Height="450" Width="800">
+    <!--<Window.DataContext>
+        <vm:ViewModel/>
+    </Window.DataContext>-->
     <Grid>
-        <Button Command="{Binding ClickCommand}" Content="Submit" HorizontalAlignment="Center" Height="50" Margin="0,295,0,0" VerticalAlignment="Top" Width="136" FontSize="20"/>
-        <TextBox HorizontalAlignment="Center" Height="55" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="172" FontSize="36" TextChanged="TextBox_TextChanged_1"/>
-        <TextBlock HorizontalAlignment="Center" Height="46" Margin="0,92,0,0" TextWrapping="Wrap" Text="Proszę podać liczbę kól" VerticalAlignment="Top" Width="258" FontSize="24"/>
+        <Button Command="{Binding ClickCommand}" Content="Submit" HorizontalAlignment="Left" Height="48" Margin="654,376,0,0" VerticalAlignment="Top" Width="136" FontSize="20"/>
+        <TextBox HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="323" FontSize="36" TextChanged="TextBox_TextChanged_1" Margin="294,376,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Height="46" Margin="20,376,0,0" TextWrapping="Wrap" Text="Proszę podać liczbę kól" VerticalAlignment="Top" Width="258" FontSize="24" RenderTransformOrigin="-0.689,6.924"/>
 
     </Grid>
 </Window>
