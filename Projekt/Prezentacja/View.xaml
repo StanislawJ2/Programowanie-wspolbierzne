@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Prezentacja.ViewModel;assembly=ViewModel"
         xmlns:local="clr-namespace:Prezentacja"
         mc:Ignorable="d"
         Title="View"
         Height="450" Width="800">
-    <!--<Window.DataContext>
-        <vm:ViewModel/>
-    </Window.DataContext>-->
+    <Window.DataContext>
+        <vm:ViewModelClass/>
+    </Window.DataContext>
     <Grid>
         <Button Command="{Binding ClickCommand}" Content="Submit" HorizontalAlignment="Left" Height="48" Margin="654,376,0,0" VerticalAlignment="Top" Width="136" FontSize="20"/>
-        <TextBox HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="323" FontSize="36" TextChanged="TextBox_TextChanged_1" Margin="294,376,0,0"/>
+         <TextBox HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="{Binding Path=BallNr, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="323" FontSize="36" Margin="294,376,0,0"/> 
         <TextBlock HorizontalAlignment="Left" Height="46" Margin="20,376,0,0" TextWrapping="Wrap" Text="Proszę podać liczbę kól" VerticalAlignment="Top" Width="258" FontSize="24" RenderTransformOrigin="-0.689,6.924"/>
 
     </Grid>
