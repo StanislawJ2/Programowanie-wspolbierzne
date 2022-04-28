@@ -1,69 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Logika
 {
-    internal class Ball
+    public class Ball : INotifyPropertyChanged
     {
-        public Ball()
-        {
-            Random rnd = new Random();
-            this.x = rnd.Next(10, 991);
-            this.y = rnd.Next(10, 991);
-            while (this.speed_x != 0 || this.speed_y != 0) {
-                this.speed_x = (0.01 + rnd.NextDouble()) * rnd.Next(-1, 1);
-                this.speed_y = (0.01 + rnd.NextDouble()) * rnd.Next(-1, 1);
-            }
+        private int x;
+        private int y;
 
-            this.size = 10;
-        }
-        double x;
-        double y;
-        double speed_x;
-        double speed_y;
-        readonly double size;
-
-        public double Getx()
+        internal Ball(int x, int y)
         {
-            return x;
+            this.x = x;
+            this.y = y;
         }
 
-        public double Gety()
+        public int X_pozycja
         {
-            return y;
+            get => x;
+            set
+            {
+                x = value;
+                RaisePropertyChanged("X_pozycja");
+            }
         }
-
-        public void BallMovement ()
+        public int Y_pozycja
         {
-            if((this.x + this.speed_x) > 1000 -this.size)
+            get => y;
+            set
             {
-                this.x = 1000-this.size;
-                this.speed_x = this.speed_x * -1;
-                return;
+                y = value;
+                RaisePropertyChanged("Y_pozycja");
             }
-            if ((this.y + this.speed_y) > 1000-this.size)
-            {
-                this.y = 1000-this.size;
-                this.speed_y = this.speed_y * -1;
-                return;
-            }
-            if ((this.x + this.speed_x) < 0 + this.size)
-            {
-                this.x = 0 + this.size;
-                this.speed_x = this.speed_x * -1;
-                return;
-            }
-            if ((this.y + this.speed_y) < 0 + this.size)
-            {
-                this.y = 0 + this.size;
-                this.speed_y = this.speed_y * -1;
-                return;
-            }
-            this.x += this.speed_x;
-            this.y += this.speed_y;
-            return;
         }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

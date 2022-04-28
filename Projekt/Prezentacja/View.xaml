@@ -7,14 +7,37 @@
         xmlns:local="clr-namespace:Prezentacja"
         mc:Ignorable="d"
         Title="View"
-        Height="450" Width="800">
+        Height="475" Width="825">
     <Window.DataContext>
         <vm:ViewModelClass/>
     </Window.DataContext>
     <Grid>
-        <Button Command="{Binding ClickCommand}" Content="Submit" HorizontalAlignment="Left" Height="48" Margin="654,376,0,0" VerticalAlignment="Top" Width="136" FontSize="20"/>
-         <TextBox HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="{Binding Path=BallNr, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="323" FontSize="36" Margin="294,376,0,0"/> 
-        <TextBlock HorizontalAlignment="Left" Height="46" Margin="20,376,0,0" TextWrapping="Wrap" Text="Proszę podać liczbę kól" VerticalAlignment="Top" Width="258" FontSize="24" RenderTransformOrigin="-0.689,6.924"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="313*"/>
+            <ColumnDefinition Width="487*"/>
+        </Grid.ColumnDefinitions>
+        <Button Command="{Binding StopCommand}" IsEnabled="{Binding StopEnable}" Content="Stop" HorizontalAlignment="Left" Height="27" Margin="341,397,0,0" VerticalAlignment="Top" Width="136" FontSize="20" Grid.Column="1"/>
+        <Button Command="{Binding StartCommand}" IsEnabled="{Binding StartEnable}" Content="Start" HorizontalAlignment="Left" Height="27" Margin="148,397,0,0" VerticalAlignment="Top" Width="136" FontSize="20" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" Text="{Binding Path=BallNr, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="226" FontSize="18" Margin="225,397,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Height="27" Margin="20,397,0,0" TextWrapping="Wrap" Text="Proszę podać liczbę kól" VerticalAlignment="Top" Width="190" FontSize="18" RenderTransformOrigin="-0.689,6.924"/>
+        <ItemsControl ItemsSource="{Binding Balllist}" Grid.ColumnSpan="2" Margin="0,0,0,67">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas  Background="LightCyan" Height="350" Margin="0,0,0,0" Width="780"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="{Binding X}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Y}"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Height="10" Width="10" Stroke="Black" Fill="IndianRed"></Ellipse>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
     </Grid>
 </Window>

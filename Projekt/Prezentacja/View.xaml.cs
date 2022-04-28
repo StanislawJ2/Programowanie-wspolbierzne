@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//using Prezentacja.ViewModel;
 
 namespace Prezentacja
 {
@@ -23,7 +22,6 @@ namespace Prezentacja
     {
         public View()
         {
-           // this.DataContext = new ViewModelClass();
             InitializeComponent();
         }
     }
