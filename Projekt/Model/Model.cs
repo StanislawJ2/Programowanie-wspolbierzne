@@ -29,24 +29,24 @@ namespace Model
             }
             private LogicAbstractAPI logicAPI = LogicAbstractAPI.createAPI(null);
             private ObservableCollection<Ball_Presentation> ball_Presentation = new ObservableCollection<Ball_Presentation>();
-            internal ObservableCollection<Ball_Presentation> Ball_Presentations
+            internal ObservableCollection<Ball_Presentation> Ball_Presentation
             {
                 get => ball_Presentation;
                 set => ball_Presentation = value;
             }
             public override void createZone(int number)
             {
-                logicAPI.createZone(780, 319, number);
+                logicAPI.createZone(780, 350, number);
             }
             public override ObservableCollection<Ball_Presentation> GetBall_Presentations()
             {
                 List<Ball> ball_list = logicAPI.getBalls();
-                ball_Presentation.Clear();
+                Ball_Presentation.Clear();
                 foreach(Ball ball in ball_list)
                 {
-                    ball_Presentation.Add(new Ball_Presentation(ball));
+                    Ball_Presentation.Add(new Ball_Presentation(ball));
                 }
-                return ball_Presentation;
+                return Ball_Presentation;
             }
             public override void stop()
             {

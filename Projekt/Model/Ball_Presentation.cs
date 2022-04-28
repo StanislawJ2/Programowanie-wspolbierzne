@@ -21,14 +21,15 @@ namespace Model
 
         private void update(object sender, PropertyChangedEventArgs e)
         {
+
             Ball ball = (Ball)sender;
-            if(e.PropertyName == "X_pozycja")
+            if (e.PropertyName == "X_pozycja")
             {
-                this.x = ball.X_pozycja - 5;
+                this.X = ball.X_pozycja - 5;
             }
             else if(e.PropertyName == "Y_pozycja")
             {
-                this.y = ball.Y_pozycja - 5;
+                this.Y = ball.Y_pozycja - 5;
             }
             else
             {

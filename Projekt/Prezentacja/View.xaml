@@ -20,7 +20,7 @@
         <Button Command="{Binding StartCommand}" IsEnabled="{Binding StartEnable}" Content="Start" HorizontalAlignment="Left" Height="27" Margin="148,397,0,0" VerticalAlignment="Top" Width="136" FontSize="20" Grid.Column="1"/>
         <TextBox HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" Text="{Binding Path=BallNr, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="226" FontSize="18" Margin="225,397,0,0" Grid.ColumnSpan="2"/>
         <TextBlock HorizontalAlignment="Left" Height="27" Margin="20,397,0,0" TextWrapping="Wrap" Text="Proszę podać liczbę kól" VerticalAlignment="Top" Width="190" FontSize="18" RenderTransformOrigin="-0.689,6.924"/>
-        <ItemsControl ItemsSource="{Binding Balllist}" Grid.ColumnSpan="2" Margin="0,0,0,67">
+        <ItemsControl ItemsSource="{Binding BallsList}" Grid.ColumnSpan="2" Margin="0,0,0,67">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <Canvas  Background="LightCyan" Height="350" Margin="0,0,0,0" Width="780"/>

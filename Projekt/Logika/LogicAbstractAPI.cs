@@ -31,7 +31,6 @@ namespace Logika
                     this.dataAPI = dataAbstractAPI;
                 }
             }
-
             public override void createZone(int zone_x, int zone_y, int ball_number)
             {
                 this.zone = new Zone(zone_x, zone_y, ball_number);
@@ -39,39 +38,37 @@ namespace Logika
                 {
                     Thread t = new Thread(() =>
                     {
+                        int speed_x = 0;
+                        int speed_y = 0;
+                        Random random = new Random();
+                        while(speed_x + speed_y == 0)
+                        {
+                            speed_x = random.Next(-1, 2);
+                            speed_y = random.Next(-1, 2);
+                        }
                         while (this.zone.Active)
                         {
-                            int speed_x = 0;
-                            int speed_y = 0;
-                            bool flaga = true;
-                            if (flaga)
-                            {
-                                Random random = new Random();
-                                while (speed_x + speed_y == 0)
-                                {
-                                    speed_x = random.Next(-1, 1);
-                                    speed_y = random.Next(-1, 1);
-                                }
-                                flaga = false;
-                            }
-                            if (b.X_pozycja + speed_x + 5 > zone_x)
+                            
+                            if (b.X_pozycja + speed_x + 10 > zone_x)
                             {
                                 speed_x = -speed_x;
                             }
-                            if (b.X_pozycja + speed_x + 5 < 0)
+                            if (b.X_pozycja + speed_x - 10 < 0)
                             {
                                 speed_x = -speed_x;
                             }
-                            if (b.Y_pozycja - speed_y + 5 > zone_y)
+                            if (b.Y_pozycja + speed_y + 10 > zone_y)
                             {
                                 speed_y = -speed_y;
                             }
-                            if (b.Y_pozycja + speed_y + 5 < 0)
+                            if (b.Y_pozycja + speed_y - 10 < 0)
                             {
                                 speed_y = -speed_y;
                             }
                             b.X_pozycja = b.X_pozycja + speed_x;
                             b.Y_pozycja = b.Y_pozycja + speed_y;
+                            Thread.Sleep(5);
+
                         }
                     });
                     t.Start();

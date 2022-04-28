@@ -41,15 +41,18 @@ namespace Prezentacja.ViewModel
         }
         public ICommand StartCommand { get; set; }
         public ICommand StopCommand { get; set; }
-        private ObservableCollection<Ball_Presentation> balllist;
-        public ObservableCollection<Ball_Presentation> Balllist
+
+        private ObservableCollection<Ball_Presentation> ballsList;
+        public ObservableCollection<Ball_Presentation> BallsList
         {
-            get => balllist;
+            get => ballsList;
+
             set
             {
-                if (value.Equals(balllist)) { return; }
-                balllist = value;
-                RaisePropertyChanged("Balllist");
+                if (value.Equals(ballsList))
+                    return;
+                ballsList = value;
+                RaisePropertyChanged("BallsList");
             }
         }
 
@@ -86,7 +89,7 @@ namespace Prezentacja.ViewModel
                 return;
             }
             StartEnable = false;
-            Balllist = modelAPI.GetBall_Presentations();
+            BallsList = modelAPI.GetBall_Presentations();
         }
         private void stop()
         {
