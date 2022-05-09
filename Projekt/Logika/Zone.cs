@@ -27,7 +27,7 @@ namespace Logika
         internal List<Ball> Ball_list => ball_list;
         internal void createBall(int ball_number)
         {
-            if( zone_x <= 10 || zone_y <= 10 || ball_number <= 0)
+            if( zone_x <= 20 || zone_y <= 20 || ball_number <= 0)
             {
                 throw new ArgumentOutOfRangeException();
              
@@ -35,9 +35,10 @@ namespace Logika
             Random rand = new Random();
             for(int i = 0; i < ball_number; i++)
             {
-                int x = rand.Next(10,this.zone_x - 10);
-                int y = rand.Next(10,this.zone_y - 10);
-                this.ball_list.Add(new Ball(x,y));
+                int size = rand.Next(10, 21);      
+                int x = rand.Next(size,this.zone_x - size);
+                int y = rand.Next(size,this.zone_y - size);
+                this.ball_list.Add(new Ball(size,x,y));
             }
         }
         internal bool Active

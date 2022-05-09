@@ -34,7 +34,7 @@
             </ItemsControl.ItemContainerStyle>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Ellipse Height="10" Width="10" Stroke="Black" Fill="IndianRed"></Ellipse>
+                    <Ellipse Height="{Binding Size}" Width="{Binding Size}" Stroke="Black" Fill="IndianRed"></Ellipse>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

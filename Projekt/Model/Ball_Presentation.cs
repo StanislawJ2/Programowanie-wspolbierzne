@@ -9,13 +9,15 @@ namespace Model
 {
     public class Ball_Presentation : INotifyPropertyChanged
     {
-        private int x;
-        private int y;
+        private double x;
+        private double y;
+        private int size;
 
         internal Ball_Presentation(Ball b)
         {
-            this.x = b.X_pozycja - 5;
-            this.y = b.Y_pozycja - 5;
+            this.size = b.Size;
+            this.x = b.X_pozycja - (size/2);
+            this.y = b.Y_pozycja - (size/2);
             b.PropertyChanged += update;
         }
 
@@ -25,11 +27,15 @@ namespace Model
             Ball ball = (Ball)sender;
             if (e.PropertyName == "X_pozycja")
             {
-                this.X = ball.X_pozycja - 5;
+                this.X = ball.X_pozycja - (size/2);
             }
             else if(e.PropertyName == "Y_pozycja")
             {
-                this.Y = ball.Y_pozycja - 5;
+                this.Y = ball.Y_pozycja - (size/2);
+            }
+            else if(e.PropertyName == "Size_ball")
+            {
+                this.Size = ball.Size;
             }
             else
             {
@@ -37,7 +43,16 @@ namespace Model
             }
         }
 
-        public int X
+        public int Size
+        {
+            get => size;
+            set
+            {
+                size = value;
+                RaisePropertyChange("Size");
+            }
+        }
+        public double X
         {
             get => x;
             set
@@ -47,7 +62,7 @@ namespace Model
             }
         }
 
-        public int Y
+        public double Y
         {
             get => y;
             set

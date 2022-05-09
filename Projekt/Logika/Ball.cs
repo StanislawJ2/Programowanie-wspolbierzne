@@ -8,16 +8,42 @@ namespace Logika
 {
     public class Ball : INotifyPropertyChanged
     {
-        private int x;
-        private int y;
+        private double x;
+        private double y;
+        private int size;
+        private double speed_x;
+        private double speed_y;
 
-        internal Ball(int x, int y)
+        internal Ball(int size, int x, int y)
         {
             this.x = x;
             this.y = y;
+            this.size = size;
         }
 
-        public int X_pozycja
+        public double speed_X
+        {
+            get => speed_x;
+            set => speed_x = value;
+        }
+
+        public int Size
+        {
+            get => size;
+            set
+            {
+                size = value;
+                RaisePropertyChanged("Size_ball");
+            }  
+        }
+
+        public double speed_Y
+        {
+            get => speed_y;
+            set => speed_y = value;
+        }
+
+        public double X_pozycja
         {
             get => x;
             set
@@ -26,7 +52,7 @@ namespace Logika
                 RaisePropertyChanged("X_pozycja");
             }
         }
-        public int Y_pozycja
+        public double Y_pozycja
         {
             get => y;
             set
