@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Logika
+namespace Dane
 {
-    internal class Zone
+    public class Zone
     {
         private readonly int zone_x;
         private readonly int zone_y;
@@ -22,10 +22,10 @@ namespace Logika
 
             createBall(ball_number);
         }
-        internal int Zone_X => zone_x;
-        internal int Zone_Y => zone_y;
-        internal List<Ball> Ball_list => ball_list;
-        internal void createBall(int ball_number)
+        public int Zone_X => zone_x;
+        public int Zone_Y => zone_y;
+        public List<Ball> Ball_list => ball_list;
+        public void createBall(int ball_number)
         {
             if( zone_x <= 20 || zone_y <= 20 || ball_number <= 0)
             {
@@ -38,7 +38,7 @@ namespace Logika
                 int size = rand.Next(10, 21);      
                 int x = rand.Next(size,this.zone_x - size);
                 int y = rand.Next(size,this.zone_y - size);
-                this.ball_list.Add(new Ball(size,x,y));
+                this.Ball_list.Add(new Ball(size,x,y));
             }
         }
         internal bool Active

@@ -4,28 +4,21 @@ using System.Text;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Logika
+namespace Dane
 {
     public class Ball : INotifyPropertyChanged
     {
         private double x;
         private double y;
         private int size;
-        private double speed_x;
-        private double speed_y;
 
-        internal Ball(int size, int x, int y)
+        public Ball(int size, int x, int y)
         {
             this.x = x;
             this.y = y;
             this.size = size;
         }
 
-        public double speed_X
-        {
-            get => speed_x;
-            set => speed_x = value;
-        }
 
         public int Size
         {
@@ -37,11 +30,6 @@ namespace Logika
             }  
         }
 
-        public double speed_Y
-        {
-            get => speed_y;
-            set => speed_y = value;
-        }
 
         public double X_pozycja
         {

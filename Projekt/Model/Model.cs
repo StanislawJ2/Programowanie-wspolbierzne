@@ -40,9 +40,9 @@ namespace Model
             }
             public override ObservableCollection<Ball_Presentation> GetBall_Presentations()
             {
-                List<Ball> ball_list = logicAPI.getBalls();
+                List<BallLogic> ball_list = logicAPI.getBalls();
                 Ball_Presentation.Clear();
-                foreach(Ball ball in ball_list)
+                foreach(BallLogic ball in ball_list)
                 {
                     Ball_Presentation.Add(new Ball_Presentation(ball));
                 }

@@ -5,6 +5,7 @@ using Logika;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+
 namespace Model
 {
     public class Ball_Presentation : INotifyPropertyChanged
@@ -13,7 +14,7 @@ namespace Model
         private double y;
         private int size;
 
-        internal Ball_Presentation(Ball b)
+        internal Ball_Presentation(BallLogic b)
         {
             this.size = b.Size;
             this.x = b.X_pozycja - (size/2);
@@ -24,7 +25,7 @@ namespace Model
         private void update(object sender, PropertyChangedEventArgs e)
         {
 
-            Ball ball = (Ball)sender;
+            BallLogic ball = (BallLogic)sender;
             if (e.PropertyName == "X_pozycja")
             {
                 this.X = ball.X_pozycja - (size/2);

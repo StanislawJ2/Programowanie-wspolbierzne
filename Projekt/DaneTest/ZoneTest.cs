@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Logika.Test
+namespace Dane.Test
 {
     [TestClass]
     public class ZoneTests

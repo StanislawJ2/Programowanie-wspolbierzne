@@ -1,8 +1,8 @@
 ﻿using System;
 using Dane;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Logika
 {
@@ -12,14 +12,19 @@ namespace Logika
         {
             return new LogicAPI(dataAbstractAPI);
         }
+        
         public abstract void stop();
         public abstract void createZone(int zone_x, int zone_y, int ball_number);
-        public abstract List<Ball> getBalls();
+        public abstract List<BallLogic> getBalls();
 
         internal sealed class LogicAPI: LogicAbstractAPI
         {
-            private Zone zone;
             private DataAbstractAPI dataAPI;
+            private List<BallLogic> balls = new List<BallLogic>();
+            bool active = false;
+            public List<BallLogic> Balls { get => balls; set => balls = value; }
+            public bool Active { get => active; set => active = value; }
+
             internal LogicAPI(DataAbstractAPI dataAbstractAPI = null)
             {
                 if(dataAbstractAPI == null)
@@ -33,10 +38,15 @@ namespace Logika
             }
             public override void createZone(int zone_x, int zone_y, int ball_number)
             {
-                this.zone = new Zone(zone_x, zone_y, ball_number);
-                foreach (Ball b in zone.Ball_list)
+                dataAPI.createZone(zone_x, zone_y, ball_number);
+                foreach (Ball b in dataAPI.getBalls())
                 {
-                    Thread t = new Thread(() =>
+                    this.Balls.Add(new BallLogic(b));
+                }
+                this.Active = true;
+                foreach (BallLogic b in this.Balls)
+                {
+                    Task t = new Task(() =>
                      {
                         double dx, dy, d,vx1,vx2,vy1,vy2;
                         Random random = new Random();
@@ -45,9 +55,9 @@ namespace Logika
                             b.speed_X = random.Next(-1, 2) * random.NextDouble();
                             b.speed_Y = random.Next(-1, 2) * random.NextDouble();
                         }
-                        while (this.zone.Active)
+                        while (this.Active)
                         {
-                            foreach (Ball ball in this.zone.Ball_list)
+                            foreach (BallLogic ball in this.Balls)
                             {
                                 if (!ball.Equals(b))
                                 {
@@ -94,13 +104,13 @@ namespace Logika
                     t.Start();
                 }
             }
-            public override List<Ball> getBalls()
+            public override List<BallLogic> getBalls()
             {
-                return zone.Ball_list;
+                return this.Balls;
             }
             public override void stop()
             {
-                this.zone.Active = false;
+                this.Active = false;
             }
         }
             

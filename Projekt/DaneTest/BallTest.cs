@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Logika.Test
+namespace Dane.Test
 {
     [TestClass]
     public class BallTests
@@ -8,7 +8,7 @@ namespace Logika.Test
         [TestMethod]
         public void BallTest()
         {
-            Ball ball = new Ball(2, 2);
+            Ball ball = new Ball(5, 2, 2);
             Assert.AreEqual(2, ball.X_pozycja);
             Assert.AreEqual(2, ball.Y_pozycja);
             ball.X_pozycja = 1;
