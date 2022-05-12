@@ -17,13 +17,13 @@ namespace Logika
             this.ball = ball;
         }
 
-        public double speed_X
+        public double Speed_X
         {
             get => speed_x;
             set => speed_x = value;
         }
 
-        public double speed_Y
+        public double Speed_Y
         {
             get => speed_y;
             set => speed_y = value;

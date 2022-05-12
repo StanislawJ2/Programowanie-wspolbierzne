@@ -48,12 +48,12 @@ namespace Logika
                 {
                     Task t = new Task(() =>
                      {
-                        double dx, dy, d,vx1,vx2,vy1,vy2;
+                        double dx, dy, d, vx1, vx2, vy1, vy2;
                         Random random = new Random();
-                        while(b.speed_X + b.speed_Y == 0)
+                        while(b.Speed_X + b.Speed_Y == 0)
                         {
-                            b.speed_X = random.Next(-1, 2) * random.NextDouble();
-                            b.speed_Y = random.Next(-1, 2) * random.NextDouble();
+                            b.Speed_X = random.Next(-1, 2) * random.NextDouble();
+                            b.Speed_Y = random.Next(-1, 2) * random.NextDouble();
                         }
                         while (this.Active)
                         {
@@ -66,35 +66,35 @@ namespace Logika
                                      d = Math.Sqrt(dx * dx + dy * dy);
                                      if(d <= ((b.Size/2) + (ball.Size/2)))
                                      {
-                                         vx1 = b.speed_X;
-                                         vx2 = ball.speed_X;
-                                         vy1 = b.speed_Y;
-                                         vy2 = ball.speed_Y;
-                                         b.speed_X = ((vx1 * (b.Size - ball.Size)) + (2 * ball.Size * vx2)) / (b.Size + ball.Size);
-                                         ball.speed_X = ((vx2 * (ball.Size - b.Size)) + (2 * b.Size * vx1)) / (b.Size + ball.Size);
-                                         b.speed_Y = ((vy1 * (b.Size - ball.Size)) + (2 * ball.Size * vy2)) / (b.Size + ball.Size);
-                                         ball.speed_Y = ((vy2 * (ball.Size - b.Size)) + (2 * b.Size * vy1)) / (b.Size + ball.Size);
+                                         vx1 = b.Speed_X;
+                                         vx2 = ball.Speed_X;
+                                         vy1 = b.Speed_Y;
+                                         vy2 = ball.Speed_Y;
+                                         b.Speed_X = ((vx1 * (b.Size - ball.Size)) + (2 * ball.Size * vx2)) / (b.Size + ball.Size);
+                                         ball.Speed_X = ((vx2 * (ball.Size - b.Size)) + (2 * b.Size * vx1)) / (b.Size + ball.Size);
+                                         b.Speed_Y = ((vy1 * (b.Size - ball.Size)) + (2 * ball.Size * vy2)) / (b.Size + ball.Size);
+                                         ball.Speed_Y = ((vy2 * (ball.Size - b.Size)) + (2 * b.Size * vy1)) / (b.Size + ball.Size);
                                      }
                                 } 
                             }
                             if (b.X_pozycja + (b.Size/2) > zone_x)
                             {
-                                 b.speed_X = -b.speed_X;
+                                 b.Speed_X = -b.Speed_X;
                             }
                             if (b.X_pozycja - (b.Size / 2) < 0)
                             {
-                                 b.speed_X = -b.speed_X;
+                                 b.Speed_X = -b.Speed_X;
                             }
                             if (b.Y_pozycja + (b.Size / 2) > zone_y)
                             {
-                                 b.speed_Y = -b.speed_Y;
+                                 b.Speed_Y = -b.Speed_Y;
                             }
                             if (b.Y_pozycja - (b.Size / 2) < 0)
                             {
-                                 b.speed_Y = -b.speed_Y;
+                                 b.Speed_Y = -b.Speed_Y;
                             }
-                            b.X_pozycja = b.X_pozycja + b.speed_X;
-                            b.Y_pozycja = b.Y_pozycja + b.speed_Y;
+                            b.X_pozycja = b.X_pozycja + b.Speed_X;
+                            b.Y_pozycja = b.Y_pozycja + b.Speed_Y;
 
                             
                             Thread.Sleep(5);
