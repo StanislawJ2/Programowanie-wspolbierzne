@@ -19,6 +19,8 @@ namespace Logika.Test
                 Assert.IsTrue((ball.Y_pozycja - 10) >= 0 && (ball.Y_pozycja + 10) <= 100);
             }
             API.stop();
+            Dane.Ball b = new Dane.Ball(3,3,4);
+            BallLogic logicBall = new BallLogic(b);
   
         }
     }

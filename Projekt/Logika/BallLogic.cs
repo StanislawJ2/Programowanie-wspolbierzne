@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Dane;
 
@@ -9,8 +8,6 @@ namespace Logika
     {
         private readonly Ball ball;
 
-        private double speed_x;
-        private double speed_y;
 
         public BallLogic(Ball ball)
         {
@@ -19,14 +16,14 @@ namespace Logika
 
         public double Speed_X
         {
-            get => speed_x;
-            set => speed_x = value;
+            get => ball.Speed_x;
+            set => ball.Speed_x = value;
         }
 
         public double Speed_Y
         {
-            get => speed_y;
-            set => speed_y = value;
+            get => ball.Speed_y;
+            set => ball.Speed_y = value;
         }
 
         public int Size

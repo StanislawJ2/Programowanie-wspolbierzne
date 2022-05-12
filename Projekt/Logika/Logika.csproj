@@ -9,7 +9,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-			<_Parameter1>LogikaTest</_Parameter1>
+			<_Parameter1>DaneTest</_Parameter1>
 		</AssemblyAttribute>
 	</ItemGroup>
 

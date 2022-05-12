@@ -38,6 +38,7 @@ namespace Logika
             }
             public override void createZone(int zone_x, int zone_y, int ball_number)
             {
+                object balanceLock = new object();
                 dataAPI.createZone(zone_x, zone_y, ball_number);
                 foreach (Ball b in dataAPI.getBalls())
                 {
@@ -61,42 +62,47 @@ namespace Logika
                             {
                                 if (!ball.Equals(b))
                                 {
-                                     dx = b.X_pozycja - ball.X_pozycja;
-                                     dy = b.Y_pozycja - ball.Y_pozycja;
-                                     d = Math.Sqrt(dx * dx + dy * dy);
-                                     if(d <= ((b.Size/2) + (ball.Size/2)))
+                                     lock (balanceLock)
                                      {
-                                         vx1 = b.Speed_X;
-                                         vx2 = ball.Speed_X;
-                                         vy1 = b.Speed_Y;
-                                         vy2 = ball.Speed_Y;
-                                         b.Speed_X = ((vx1 * (b.Size - ball.Size)) + (2 * ball.Size * vx2)) / (b.Size + ball.Size);
-                                         ball.Speed_X = ((vx2 * (ball.Size - b.Size)) + (2 * b.Size * vx1)) / (b.Size + ball.Size);
-                                         b.Speed_Y = ((vy1 * (b.Size - ball.Size)) + (2 * ball.Size * vy2)) / (b.Size + ball.Size);
-                                         ball.Speed_Y = ((vy2 * (ball.Size - b.Size)) + (2 * b.Size * vy1)) / (b.Size + ball.Size);
-                                     }
-                                } 
-                            }
-                            if (b.X_pozycja + (b.Size/2) > zone_x)
-                            {
-                                 b.Speed_X = -b.Speed_X;
-                            }
-                            if (b.X_pozycja - (b.Size / 2) < 0)
-                            {
-                                 b.Speed_X = -b.Speed_X;
-                            }
-                            if (b.Y_pozycja + (b.Size / 2) > zone_y)
-                            {
-                                 b.Speed_Y = -b.Speed_Y;
-                            }
-                            if (b.Y_pozycja - (b.Size / 2) < 0)
-                            {
-                                 b.Speed_Y = -b.Speed_Y;
-                            }
-                            b.X_pozycja = b.X_pozycja + b.Speed_X;
-                            b.Y_pozycja = b.Y_pozycja + b.Speed_Y;
+                                         dx = b.X_pozycja - ball.X_pozycja;
+                                         dy = b.Y_pozycja - ball.Y_pozycja;
+                                         d = Math.Sqrt(dx * dx + dy * dy);
+                                         if (d < ((b.Size / 2) + (ball.Size / 2)))
+                                         {
+                                             vx1 = b.Speed_X;
+                                             vx2 = ball.Speed_X;
+                                             vy1 = b.Speed_Y;
+                                             vy2 = ball.Speed_Y;
+                                             b.Speed_X = ((vx1 * (b.Size - ball.Size)) + (2 * ball.Size * vx2)) / (b.Size + ball.Size);
+                                             ball.Speed_X = ((vx2 * (ball.Size - b.Size)) + (2 * b.Size * vx1)) / (b.Size + ball.Size);
+                                             b.Speed_Y = ((vy1 * (b.Size - ball.Size)) + (2 * ball.Size * vy2)) / (b.Size + ball.Size);
+                                             ball.Speed_Y = ((vy2 * (ball.Size - b.Size)) + (2 * b.Size * vy1)) / (b.Size + ball.Size);
+                                         }
 
-                            
+                                     }
+                                 } 
+                            }
+                             lock (balanceLock)
+                             {
+                                 if (b.X_pozycja + (b.Size / 2) + b.Speed_X > zone_x)
+                                 {
+                                     b.Speed_X = -b.Speed_X;
+                                 }
+                                 if (b.X_pozycja - (b.Size / 2) + b.Speed_X < 0)
+                                 {
+                                     b.Speed_X = -b.Speed_X;
+                                 }
+                                 if (b.Y_pozycja + (b.Size / 2) + b.Speed_Y > zone_y)
+                                 {
+                                     b.Speed_Y = -b.Speed_Y;
+                                 }
+                                 if (b.Y_pozycja - (b.Size / 2) + b.Speed_Y < 0)
+                                 {
+                                     b.Speed_Y = -b.Speed_Y;
+                                 }
+                                 b.X_pozycja = b.X_pozycja + b.Speed_X;
+                                 b.Y_pozycja = b.Y_pozycja + b.Speed_Y;
+                             }
                             Thread.Sleep(5);
 
                         }
@@ -111,6 +117,7 @@ namespace Logika
             public override void stop()
             {
                 this.Active = false;
+                this.Balls.Clear();
             }
         }
             

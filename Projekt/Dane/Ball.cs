@@ -11,12 +11,26 @@ namespace Dane
         private double x;
         private double y;
         private int size;
+        private double speed_x;
+        private double speed_y;
 
         public Ball(int size, int x, int y)
         {
             this.x = x;
             this.y = y;
             this.size = size;
+        }
+
+        public double Speed_x
+        {
+            get => speed_x;
+            set => speed_x = value;
+        }
+
+        public double Speed_y
+        {
+            get => speed_y;
+            set => speed_y = value;
         }
 
 
