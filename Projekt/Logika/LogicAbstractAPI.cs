@@ -8,6 +8,7 @@ namespace Logika
 {
     public abstract class LogicAbstractAPI
     {
+
         public static LogicAbstractAPI createAPI(DataAbstractAPI dataAbstractAPI = null)
         {
             return new LogicAPI(dataAbstractAPI);
@@ -45,6 +46,7 @@ namespace Logika
                     this.Balls.Add(new BallLogic(b));
                 }
                 this.Active = true;
+               // logger = new Logger(this.Balls);
                 foreach (BallLogic b in this.Balls)
                 {
                     Task t = new Task(() =>
