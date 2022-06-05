@@ -38,7 +38,7 @@ namespace Dane
                 int size = rand.Next(10, 21);      
                 int x = rand.Next(size,this.zone_x - size);
                 int y = rand.Next(size,this.zone_y - size);
-                this.Ball_list.Add(new Ball(size,x,y));
+                this.Ball_list.Add(new Ball(size,x,y,i));
             }
         }
         internal bool Active

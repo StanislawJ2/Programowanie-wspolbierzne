@@ -10,7 +10,7 @@ namespace Logika.Test
         [TestMethod]
         public void BallLogicTest()
         {
-            Dane.Ball b = new Dane.Ball(1, 1, 2);
+            Dane.Ball b = new Dane.Ball(1, 1, 2,1);
             BallLogic ballLogic = new BallLogic(b);
 
             Assert.IsNotNull(ballLogic);

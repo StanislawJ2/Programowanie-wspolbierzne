@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Dane
 {
-    internal class Logger
+    public class Logger
     {
         private static List<Ball> balls;
         private Stopwatch stopwatch = new Stopwatch();

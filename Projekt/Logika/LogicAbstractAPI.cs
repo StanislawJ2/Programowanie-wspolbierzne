@@ -22,6 +22,7 @@ namespace Logika
         {
             private DataAbstractAPI dataAPI;
             private List<BallLogic> balls = new List<BallLogic>();
+            private List<Ball> dballs = new List<Ball>();
             bool active = false;
             public List<BallLogic> Balls { get => balls; set => balls = value; }
             public bool Active { get => active; set => active = value; }
@@ -44,9 +45,10 @@ namespace Logika
                 foreach (Ball b in dataAPI.getBalls())
                 {
                     this.Balls.Add(new BallLogic(b));
+                    this.dballs.Add(b);
                 }
                 this.Active = true;
-               // logger = new Logger(this.Balls);
+                Logger logger = new Logger(dballs);
                 foreach (BallLogic b in this.Balls)
                 {
                     Task t = new Task(() =>

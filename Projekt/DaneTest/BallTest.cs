@@ -8,7 +8,7 @@ namespace Dane.Test
         [TestMethod]
         public void BallTest()
         {
-            Ball ball = new Ball(5, 2, 2);
+            Ball ball = new Ball(5, 2, 2,1);
             Assert.AreEqual(2, ball.X_pozycja);
             Assert.AreEqual(2, ball.Y_pozycja);
             Assert.AreEqual(5, ball.Size);
